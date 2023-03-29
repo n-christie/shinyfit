@@ -17,7 +17,7 @@ source(file.path("server", "server0_data.R"),  local = TRUE)$value
 ui <- fluidPage(
 	
 	# App title
-	titlePanel("Shinyfit"),
+	titlePanel("Reloc-AGE"),
 	
 	fluidRow(
 		# Inputs: edit in this file:

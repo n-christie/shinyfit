@@ -12,21 +12,23 @@ library(forcats)
 
 # colon_s example
 # Read data to "alldata"
-alldata = finalfit::colon_s
+
+alldata <- readRDS("data/attributes_df.rds") 
+
 
 # Display variable names
 names(alldata)
 
 # Select subset of variables to keep
-alldata = alldata %>% 
-	dplyr::select(8:9, 14:23, 25, 27, 29, 32)
+# alldata = alldata %>% 
+# 	dplyr::select(8:9, 14:23, 25, 27, 29, 32)
 
 # View dataset
 ff_glimpse(alldata)
 
 # Add variable labels if wish
 ## e.g. 
-alldata$nodes %<>% ff_label("Lymph node number")
+#alldata$nodes %<>% ff_label("Lymph node number")
 
 # Recode factor levels if wish
 # alldata %<>%
@@ -46,9 +48,9 @@ names(alldata_names) = extract_variable_label(alldata)
 matrix(alldata_names)
 
 # Choose how to arrange the above list (order respected):
-alldata_names_list = list(Outcomes = alldata_names[c(15, 2, 3)],
-													Explanatory = alldata_names[c(13, 4:12, 1, 14)],
-													Groups = alldata_names[16]
+alldata_names_list = list(Outcomes = alldata_names[c(1:25,32)],
+													Explanatory = alldata_names[c(26:31)],
+													Groups = alldata_names[27]
 )
 
 # Remove outcomes from explanatory list
@@ -69,15 +71,15 @@ rm(alldata_subset)
 matrix(alldata_subset_names)
 
 # Choose how to arrange the above list:
-alldata_subset_names_list = list(Outcomes = alldata_subset_names[c(12)],
-																	Explanatory = alldata_subset_names[c(10,1,2:9)],
-																	Groups = alldata_subset_names[13]
+alldata_subset_names_list = list(Outcomes = alldata_subset_names[c(1:25,32)],
+																	Explanatory = alldata_subset_names[c(26:31)],
+																	Groups = alldata_subset_names[27]
 )
 rm(alldata_subset_names)
 
 # Name project
-shinyfit_name = "Colon dataset"
-dataset_label = "colon_s"
+shinyfit_name = "Reloc_age_survey"
+dataset_label = "baseline"
 
 # Make final list for app
 alldata_list = list(alldata=alldata,
